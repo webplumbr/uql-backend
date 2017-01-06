@@ -1,4 +1,4 @@
-# Laravel 5 based framework with Single Sign-On (SSO) integration
+# Laravel 5 based framework  - UQ Library API - test implementation
 
 ## Setup
 
@@ -37,12 +37,14 @@ Setup MySQL database. Make sure you set the credentials accordingly on your appl
 environment file `.env`. Here is an example based on credentials available in `.env.example`
 
 ```
-create database laravel;
-grant all privileges on laravel.* to 'laravel'@'localhost' identified by 'laravel';
+create database uql;
+
+grant all privileges on uql.* to 'uql'@'localhost' identified by 'sha1-hash-or-whatever';
+
 flush privileges
 ```
 
-Setup User table and seed with dummy data
+Setup Library table and seed with dummy data
 
 ```
 php artisan migrate:refresh --seed
