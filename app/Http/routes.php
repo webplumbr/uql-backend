@@ -15,5 +15,14 @@
 //comment the following line on local development machine - if it is of hinderance
 //@todo turn this in to an environment based setting
 
-Route::get('/api/library/{id}', ['uses' => 'ApiController@details', 'as' => 'get_details']);
-Route::post('/api/library', ['uses' => 'ApiController@update', 'as' => 'update_details']);
+Route::get(
+    '/api/library/{id}',
+    ['uses' => 'ApiController@details', 'as' => 'get_details']
+    )->where(
+    ['id' => '\d+']
+    );
+
+Route::post(
+    '/api/library',
+    ['uses' => 'ApiController@update', 'as' => 'update_details']
+    );
