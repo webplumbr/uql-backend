@@ -17,12 +17,12 @@
 
 Route::get(
     '/api/library/{id}',
-    ['uses' => 'ApiController@details', 'as' => 'get_details']
+    ['uses' => 'ApiController@libraryDetails', 'as' => 'get_details']
     )->where(
     ['id' => '\d+']
-    );
+);
 
 Route::post(
     '/api/library',
-    ['uses' => 'ApiController@update', 'as' => 'update_details']
-    );
+    ['uses' => 'ApiController@librarySave', 'middleware' => ['valid_user', 'json2array']]
+);

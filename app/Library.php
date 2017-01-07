@@ -10,5 +10,5 @@ class Library extends Model
 
     public $timestamps = false;
 
-
+    protected $fillable = ['id', 'code', 'abbr', 'name', 'url'];
 }

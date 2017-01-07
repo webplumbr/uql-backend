@@ -4,14 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Library;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Requests\LibrarySaveRequest;
 use App\Http\Controllers\Controller;
 
 class ApiController extends Controller
 {
-    public function details($id)
+    public function libraryDetails($id)
     {
         try {
             return Library::where('id', '=', $id)->firstOrFail();
@@ -20,8 +22,9 @@ class ApiController extends Controller
         }
     }
 
-    public function update()
+    public function librarySave(LibrarySaveRequest $request)
     {
-        //@todo
+        //only allows saving a new record
+        return Library::create($request->all());
     }
 }
