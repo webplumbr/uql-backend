@@ -1,6 +1,11 @@
 # UQ Library API - test implementation
 
-Makes use of Laravel 5.1 framework
+## Requirements
+* Laravel 5.1 Framework
+* PHP 5.5 or above (and related modules)
+* MySQL 5.5 or above
+* Apache 2.4 or above
+* Linux (Debian) Operating System
 
 ## Setup
 
@@ -46,27 +51,53 @@ grant all privileges on uql.* to 'uql'@'localhost' identified by 'sha1-hash-or-w
 flush privileges
 ```
 
-Setup Library table and seed with dummy data
+Setup `library` table and seed with dummy data by running the following command in the command-line.
 
 ```
 php artisan migrate:refresh --seed
 ```
 
 ### Apache2
-To do - add apache2 web configuration and setup and other information
 
-## FAQ
+Use the following apache 2.4 configuration to inform the web server about your virtual host.
+
+```
+<VirtualHost *:80>
+
+  ServerName uql-backend.localhost
+  DocumentRoot /srv/uql-backend/public
+
+  <Directory /srv/uql-backend>
+    AllowOverride All
+    Require all granted
+  </Directory>
+
+</VirtualHost>
+```
+Once you have added the above configuration the `/etc/apache2/sites-available/` folder please enable the site and restart the Server.
+
+```
+sudo a2ensite uql-backend.conf
+sudo service apache2 restart
+```
+
+## Troubleshooting
 
 If you run in to folder permissions error or 500 Internal Server Error, ensure your Web Server User has appropriate 
 write permissions on `storage/` folder
 
 ```
-sudo chmod -R 0777 storage/
+sudo chown -R www-data:www-data storage/
+sudo chmod -R 0755 storage/
 ```
+**NOTE:** `www-data` is the user and group of your apache2 process. In some linux distributions this could vary.
+
 If you run in to Laravel artisan command's failed to open `bootstrap/cache/services.json` error message, try creating 
 the following cache directory under `bootstrap` folder.
 
 ```
 mkdir bootstrap/cache
 ```
+## References
+1. [Laravel 5.1 installation notes](https://laravel.com/docs/5.1/installation)
 
