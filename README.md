@@ -1,4 +1,6 @@
-# Laravel 5 based framework  - UQ Library API - test implementation
+# UQ Library API - test implementation
+
+Makes use of Laravel 5.1 framework
 
 ## Setup
 
