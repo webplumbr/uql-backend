@@ -27,4 +27,16 @@ class ApiController extends Controller
         //only allows saving a new record
         return Library::create($request->all());
     }
+
+    public function findSmallestLeaf(Request $request)
+    {
+        $tree = json_decode($request->input('tree', null));
+
+        if (json_last_error() === JSON_ERROR_NONE) {
+            return get_smallest_leaf($tree);
+        } else {
+            abort(400);
+        }
+
+    }
 }

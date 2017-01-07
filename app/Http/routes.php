@@ -26,3 +26,5 @@ Route::post(
     '/api/library',
     ['uses' => 'ApiController@librarySave', 'middleware' => ['valid_user', 'json2array']]
 );
+
+Route::get('/api/findSmallestLeaf', 'ApiController@findSmallestLeaf');
