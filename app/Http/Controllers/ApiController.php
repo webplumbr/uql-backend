@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Requests\LibrarySaveRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Response;
 
 class ApiController extends Controller
 {
@@ -32,12 +33,17 @@ class ApiController extends Controller
      * Creates a new library
      *
      * @param LibrarySaveRequest $request
-     * @return JSON object
+     * @return JSON object (201 created response) | 400 bad request
      */
     public function librarySave(LibrarySaveRequest $request)
     {
         //only allows saving a new record
-        return Library::create($request->all());
+        try {
+            Library::create($request->all());
+            return Response::json(['created' => true], 201);
+        } catch (QueryException $e) {
+            abort(400);
+        }
     }
 
     /**

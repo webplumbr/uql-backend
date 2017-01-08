@@ -3,7 +3,7 @@
 ## Sample demo
 ---
 
-[Fetch library details](http://uql-backend.webplumbr.com/api/library/14837)
+[Fetch library details](http://uql-backend.webplumbr.com/api/library/101202)
 
 [Fetch the smallest leaf](http://uql-backend.webplumbr.com/api/findSmallestLeaf?tree=%7B%0D%0A++%22root%22%3A+1%2C%0D%0A++%22left%22%3A+%7B%0D%0A++++%22root%22%3A+7%2C%0D%0A++++%22left%22%3A+%7B%0D%0A++++++%22root%22%3A+2%0D%0A++++%7D%2C%0D%0A++++%22right%22%3A+%7B%0D%0A++++++%22root%22%3A+6%0D%0A++++%7D%0D%0A++%7D%2C%0D%0A++%22right%22%3A+%7B%0D%0A++++%22root%22%3A+5%2C%0D%0A++++%22left%22%3A+%7B%0D%0A++++++%22root%22%3A+9%0D%0A++++%7D%0D%0A++%7D%0D%0A%7D)
 
@@ -103,6 +103,13 @@ Once you have added the above configuration the `/etc/apache2/sites-available/` 
 sudo a2ensite uql-backend.conf
 sudo service apache2 restart
 ```
+## Testing
+
+To execute default set of test cases, please run the following:
+
+```
+phpunit -c phpunit.xml
+```
 
 ## Troubleshooting
 ---
@@ -123,6 +130,10 @@ the following cache directory under `bootstrap` folder.
 mkdir bootstrap/cache
 ```
 
+If you run in to `Command "make:test" is not defined` issue, it is a [known issue in version 5.1][3]. Try creating test
+Class manually.
+
 [1]: https://laravel.com/docs/5.1/installation
 [2]: https://github.com/postmanlabs/postman-app-support/wiki
+[3]: https://github.com/laravel/framework/issues/10224
 
