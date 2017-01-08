@@ -1,6 +1,7 @@
 # UQ Library API - test implementation
 
 ## Sample demo
+---
 
 [Fetch library details](http://uql-backend.webplumbr.com/api/library/14837)
 
@@ -9,15 +10,17 @@
 ```
 curl -X GET http://uql-backend.webplumbr.com/api/library/14837
 
-curl -X POST --data url-encoded-JSON-data --header "X-VALID-USER: jdoe" http://uql-backend.webplumbr.com/api/library --data url-encoded-JSON-data
+curl -X POST --data url-encoded-library-JSON-object --header "X-VALID-USER: jdoe" http://uql-backend.webplumbr.com/api/library --data url-encoded-JSON-data
 
 curl -X GET http://uql-backend.webplumbr.com/api/findSmallestLeaf?tree=url-encoded-JSON-binary-tree
 
 ```
 
-Alternatively, you may use a Chrome or Firefox browser plugin/app that allows you to test API services by simulating a POST request and supplying additional header information (like the X-VALID-USER).
+Alternatively, you may use a [Chrome browser App][2] that allows you to test API services by simulating a POST request and supplying additional header information (like the X-VALID-USER).
 
 ## Requirements
+---
+
 * Laravel 5.1 Framework
 * PHP 5.5 or above (and related modules)
 * MySQL 5.5 or above
@@ -25,8 +28,11 @@ Alternatively, you may use a Chrome or Firefox browser plugin/app that allows yo
 * Linux (Debian) Operating System
 
 ## Setup
+---
 
 ### Composer
+
+For Laravel 5.1 installation, refer to the [Laravel documentation][1].
 
 Make sure you have composer installed on your system. 
 
@@ -99,6 +105,7 @@ sudo service apache2 restart
 ```
 
 ## Troubleshooting
+---
 
 If you run in to folder permissions error or 500 Internal Server Error, ensure your Web Server User has appropriate 
 write permissions on `storage/` folder
@@ -115,6 +122,7 @@ the following cache directory under `bootstrap` folder.
 ```
 mkdir bootstrap/cache
 ```
-## References
-1. [Laravel 5.1 installation notes](https://laravel.com/docs/5.1/installation)
+
+[1]: https://laravel.com/docs/5.1/installation
+[2]: https://github.com/postmanlabs/postman-app-support/wiki
 
