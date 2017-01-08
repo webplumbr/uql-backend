@@ -40,7 +40,7 @@ class ApiController extends Controller
         //only allows saving a new record
         try {
             Library::create($request->all());
-            return Response::json(['created' => true], 201);
+            return new Response(['created' => true], 201);
         } catch (QueryException $e) {
             abort(400);
         }
