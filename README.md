@@ -1,5 +1,22 @@
 # UQ Library API - test implementation
 
+## Sample demo
+
+[Fetch library details](http://uql-backend.webplumbr.com/api/library/14837)
+
+[Fetch the smallest leaf](http://uql-backend.webplumbr.com/api/findSmallestLeaf?tree=%7B%0D%0A++%22root%22%3A+1%2C%0D%0A++%22left%22%3A+%7B%0D%0A++++%22root%22%3A+7%2C%0D%0A++++%22left%22%3A+%7B%0D%0A++++++%22root%22%3A+2%0D%0A++++%7D%2C%0D%0A++++%22right%22%3A+%7B%0D%0A++++++%22root%22%3A+6%0D%0A++++%7D%0D%0A++%7D%2C%0D%0A++%22right%22%3A+%7B%0D%0A++++%22root%22%3A+5%2C%0D%0A++++%22left%22%3A+%7B%0D%0A++++++%22root%22%3A+9%0D%0A++++%7D%0D%0A++%7D%0D%0A%7D)
+
+```
+curl -X GET http://uql-backend.webplumbr.com/api/library/14837
+
+curl -X POST --data url-encoded-JSON-data --header "X-VALID-USER: jdoe" http://uql-backend.webplumbr.com/api/library --data url-encoded-JSON-data
+
+curl -X GET http://uql-backend.webplumbr.com/api/findSmallestLeaf?tree=url-encoded-JSON-binary-tree
+
+```
+
+Alternatively, you may use a Chrome or Firefox browser plugin/app that allows you to test API services by simulating a POST request and supplying additional header information (like the X-VALID-USER).
+
 ## Requirements
 * Laravel 5.1 Framework
 * PHP 5.5 or above (and related modules)
